@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigurnosni Lab - Demonstracija Ranjivosti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sigurnosni Lab - Demonstracija Ranjivosti Web Aplikacija</h1>
+
+        <!-- SQL Injection Section -->
+        <section class="vulnerability-section">
+            <h2>SQL ubacivanje (SQL Injection)</h2>
+            <div class="instructions">
+                <strong>Upute:</strong> Ovo je tipični primjer SQL ubacivanja. Ništa posebno, ali radi.
+                Poruka je plain text, a PIN skriven kako mora biti. Može se upisati nešto u bazu,
+                a kad se za poruku upiše <code>' OR 1=1 #</code> (možete kopirati odavde) onda se
+                detektira SQL ubacivanje kao što je objašnjeno na predavanjima. Sa checkboxom
+                ubacivanje se uključi ili isključi.
+            </div>
+
+            <div class="toggle-container">
+                <label>
+                    <input type="checkbox" id="sqlInjectionToggle" checked>
+                    Ranjivost uključena
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Poruka:</label>
+                <input type="text" id="message" placeholder="Unesite poruku" value="admin">
+            </div>
+
+            <div class="form-group">
+                <label for="pin">PIN:</label>
+                <input type="password" id="pin" placeholder="Unesite PIN" value="1234">
+            </div>
+
+            <div class="button-group">
+                <button onclick="saveData()">Spremi podatke</button>
+                <button onclick="searchUsers()">Pretraži korisnike</button>
+                <button onclick="resetDatabase()">Resetiraj bazu</button>
+            </div>
+
+            <div id="sqlResult" class="result"></div>
+            <div id="sqlUsers" class="users-display"></div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Sensitive Data Exposure Section -->
+        <section class="vulnerability-section">
+            <h2>Nesigurna pohrana osjetljivih podataka (Sensitive Data Exposure)</h2>
+            <div class="instructions">
+                <strong>Upute:</strong> Osjetljivi podaci se prikazuju ako je ranjivost uključena
+                ili ne prikazuju ako je isključena. Molim vas da uvažite moje rješenje, ja sam
+                shvatio da to tako treba napraviti.
+            </div>
+
+            <div class="toggle-container">
+                <label>
+                    <input type="checkbox" id="sensitiveDataToggle" checked>
+                    Ranjivost uključena
+                </label>
+            </div>
+
+            <div class="button-group">
+                <button onclick="showSensitiveData()">Prikaži stranicu sa osjetljivim podacima (GDPR)</button>
+            </div>
+
+            <div id="sensitiveDataResult" class="result"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
